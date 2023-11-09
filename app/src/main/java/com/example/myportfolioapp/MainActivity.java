@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.myportfolioapp.home.HomeFragment;
+import com.example.myportfolioapp.portfolio.PortfolioFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     Button callButton, uriButton, mapButton, mapUriButton,webPageButton;
@@ -17,9 +20,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        callButton = findViewById(R.id.button);
+        //callButton = findViewById(R.id.button);
+        //getSupportActionBar().hide();
+
+        setPortfoliofragment();
+        //setTeamFragment();
+        //setCVFragment();
+        //setHomeFragment();
 
         // Implicit intent ACTION_DIAL
+        /*
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,5 +76,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(callIntent);
             }
         });
+
+         */
+    }
+
+    void setHomeFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+    }
+
+    void setPortfoliofragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new PortfolioFragment()).commit();
     }
 }
