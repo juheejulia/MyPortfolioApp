@@ -1,6 +1,8 @@
 package com.example.myportfolioapp;
 
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,14 +24,21 @@ public class MainActivity extends AppCompatActivity implements Callback {
     List<MenuItem> menuItems;
     MenuAdapter adapter;
 
-    int selectedMenuPos = 0 ;
+    int selectedMenuPos = 0;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        // It will hide the title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // It will hide the title bar
         getSupportActionBar().hide();
+        // It enable full screen
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_main);
 
         // setup side menu
         setupSideMenu();
