@@ -1,11 +1,17 @@
 package com.example.myportfolioapp.portfolio;
 
-public class PortfolioItem {
+import java.io.Serializable;
+
+public class PortfolioItem implements Serializable {
 
     private int image;
-    private String title, description;
+    private String title,description;
 
-    public PortfolioItem() {
+    public PortfolioItem(){
+    }
+
+    public PortfolioItem(int image) {
+        this.image = image;
     }
 
     public PortfolioItem(int image, String title) {
@@ -16,7 +22,7 @@ public class PortfolioItem {
     public PortfolioItem(int image, String title, String description) {
         this.image = image;
         this.title = title;
-        this.description= description;
+        this.description = description;
     }
 
     public int getImage() {

@@ -1,90 +1,80 @@
 package com.example.myportfolioapp;
 
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myportfolioapp.home.HomeFragment;
 import com.example.myportfolioapp.portfolio.PortfolioFragment;
+import com.example.myportfolioapp.sideMenu.Callback;
+import com.example.myportfolioapp.sideMenu.MenuAdapter;
+import com.example.myportfolioapp.sideMenu.MenuItem;
+import com.example.myportfolioapp.sideMenu.MenuUtil;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
-    Button callButton, uriButton, mapButton, mapUriButton,webPageButton;
+
+public class MainActivity extends AppCompatActivity implements Callback {
+    RecyclerView menuRv;
+    List<MenuItem> menuItems;
+    MenuAdapter adapter;
+
+    int selectedMenuPos = 0 ;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //callButton = findViewById(R.id.button);
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
-        setPortfoliofragment();
-        //setTeamFragment();
-        //setCVFragment();
-        //setHomeFragment();
-
-        // Implicit intent ACTION_DIAL
-        /*
-        callButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                startActivity(callIntent);
-            }
-        });
-
-        // Intent URI
-        uriButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri phoneNumber = Uri.parse("tel:07322121111");
-                Intent callIntent = new Intent(Intent.ACTION_DIAL, phoneNumber);
-                startActivity(callIntent);
-            }
-        });
-
-        //Intent ACTION_VIEW
-        mapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent callIntent = new Intent(Intent.ACTION_VIEW);
-                startActivity(callIntent);
-            }
-        });
-
-        //Intent ACTION_VIEW with URI
-        mapUriButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri mapCoordinates = Uri.parse("geo:59.3245845857908, 18.072124936833777?z=10");
-                Intent callIntent = new Intent(Intent.ACTION_VIEW, mapCoordinates);
-                startActivity(callIntent);
-            }
-        });
-
-        //Intent ACTION_VIEW with Web page address
-        webPageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri webPage = Uri.parse("https://www.android.com");
-                Intent callIntent = new Intent(Intent.ACTION_VIEW, webPage);
-                startActivity(callIntent);
-            }
-        });
-
-         */
+        // setup side menu
+        setupSideMenu();
     }
 
-    void setHomeFragment() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+    private void setupSideMenu() {
+
+        menuRv = findViewById(R.id.rv_side_menu);
+
+        // get menu list item  will get data from a static data class
+
+        menuItems = MenuUtil.getMenuList();
+        adapter = new MenuAdapter(menuItems,this);
+        menuRv.setLayoutManager(new LinearLayoutManager(this));
+        menuRv.setAdapter(adapter);
+
     }
 
     void setPortfoliofragment() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new PortfolioFragment()).commit();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,new PortfolioFragment()).commit();
+
+    }
+
+    @Override
+    public void onSideMenuItemClick(int i) {
+        switch (menuItems.get(i).getCode()) {
+
+            //case MenuUtil.HOME_FRAGMENT_CODE : setHomeFragment();
+            //    break;
+            //case MenuUtil.CV_FRAGMENT_CODE : setCVFragment();
+            //    break;
+            //case MenuUtil.TEAM_FRAGMENT_CODE: setTeamFragment();
+            //    break;
+            case MenuUtil.PORTFOLIO_FRAGMENT_CODE:setPortfoliofragment();
+                break;
+            //default: setHomeFragment();
+        }
+
+        // hightligh the selected menu item
+
+        menuItems.get(selectedMenuPos).setSelected(false);
+        menuItems.get(i).setSelected(true);
+        selectedMenuPos = i ;
+        adapter.notifyDataSetChanged();
+
     }
 }
