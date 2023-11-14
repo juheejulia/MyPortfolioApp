@@ -1,12 +1,18 @@
 package com.example.myportfolioapp;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
     RecyclerView menuRv;
     List<MenuItem> menuItems;
     MenuAdapter adapter;
+    ImageView hamburgerMenuButton;
 
     int selectedMenuPos = 0;
 
@@ -30,23 +37,27 @@ public class MainActivity extends AppCompatActivity implements Callback {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // It will hide the title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         // It will hide the title bar
         getSupportActionBar().hide();
-        // It enable full screen
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
-
+        hamburgerMenuButton = findViewById(R.id.btn_hamburgerMenu);
+        hamburgerMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuRv.setVisibility(View.VISIBLE);
+            }
+        });
+        
         // setup side menu
         setupSideMenu();
+
     }
 
     private void setupSideMenu() {
 
         menuRv = findViewById(R.id.rv_side_menu);
+        menuRv.setVisibility(View.GONE);
 
         // get menu list item  will get data from a static data class
 
@@ -84,6 +95,5 @@ public class MainActivity extends AppCompatActivity implements Callback {
         menuItems.get(i).setSelected(true);
         selectedMenuPos = i ;
         adapter.notifyDataSetChanged();
-
     }
 }

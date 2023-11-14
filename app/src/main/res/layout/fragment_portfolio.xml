@@ -13,8 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="45dp"
         android:text="Portfolio"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -22,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-
         android:id="@+id/textView12"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

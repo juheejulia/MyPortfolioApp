@@ -49,7 +49,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     }
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
-
         ImageView icon,isSelected;
 
         public MenuViewHolder(@NonNull View itemView) {
@@ -58,15 +57,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             icon = itemView.findViewById(R.id.item_menu_icon);
             isSelected = itemView.findViewById(R.id.item_menu_selected);
 
-            // menu item click liastener
+            // menu item click listener
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onSideMenuItemClick(getAdapterPosition());
                 }
             });
-
-
         }
     }
 }

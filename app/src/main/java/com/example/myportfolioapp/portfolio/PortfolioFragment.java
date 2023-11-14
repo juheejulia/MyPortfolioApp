@@ -48,10 +48,6 @@ public class PortfolioFragment extends Fragment implements PortfolioCallback {
         // create a list of portfolio items
         mdata = new ArrayList<>();
 
-
-
-
-
         mdata.add(new PortfolioItem(R.drawable.project7));
         mdata.add(new PortfolioItem(R.drawable.project3));
         mdata.add(new PortfolioItem(R.drawable.project5));
@@ -62,13 +58,11 @@ public class PortfolioFragment extends Fragment implements PortfolioCallback {
         mdata.add(new PortfolioItem(R.drawable.project7));
         mdata.add(new PortfolioItem(R.drawable.project1));
 
-
         portfolioAdapter = new PortfolioAdapter(mdata,this);
 
         // setup grid recyclerview
         rv_portfolio.setLayoutManager(new GridLayoutManager(getActivity(),3));
         rv_portfolio.setAdapter(portfolioAdapter);
-
     }
 
     @Override
@@ -96,11 +90,5 @@ public class PortfolioFragment extends Fragment implements PortfolioCallback {
         //now we done opening the bottom sheet let's test it out
         // ok everthing goes well
         // let's set the data in details fragment
-
-
-
-
-
-
     }
 }

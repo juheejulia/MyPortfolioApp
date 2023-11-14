@@ -65,7 +65,6 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Port
                     listener.onPortfolioItemClick(getAdapterPosition());
                 }
             });
-
         }
     }
 }
