@@ -16,9 +16,6 @@ import com.example.myportfolioapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class PortfolioFragment extends Fragment implements PortfolioCallback {
 
     List<PortfolioItem> mdata;

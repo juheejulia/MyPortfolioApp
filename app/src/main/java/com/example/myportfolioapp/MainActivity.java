@@ -1,14 +1,10 @@
 package com.example.myportfolioapp;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,54 +20,15 @@ import com.example.myportfolioapp.sideMenu.MenuUtil;
 
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity implements Callback {
-    RecyclerView menuRv;
+    RecyclerView menuRecycleView;
     List<MenuItem> menuItems;
-    MenuAdapter adapter;
-    ImageView hamburgerMenuButton;
-
+    MenuAdapter menuAdapter;
+    ImageView homeButton;
     int selectedMenuPos = 0;
 
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        // It will hide the title bar
-        getSupportActionBar().hide();
-        setContentView(R.layout.activity_main);
-        hamburgerMenuButton = findViewById(R.id.btn_hamburgerMenu);
-        hamburgerMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                menuRv.setVisibility(View.VISIBLE);
-            }
-        });
-        
-        // setup side menu
-        setupSideMenu();
-
-    }
-
-    private void setupSideMenu() {
-
-        menuRv = findViewById(R.id.rv_side_menu);
-        menuRv.setVisibility(View.GONE);
-
-        // get menu list item  will get data from a static data class
-
-        menuItems = MenuUtil.getMenuList();
-        adapter = new MenuAdapter(menuItems,this);
-        menuRv.setLayoutManager(new LinearLayoutManager(this));
-        menuRv.setAdapter(adapter);
-
-    }
-
-    void setPortfoliofragment() {
-
+    public void setPortfolioFragment() {
         getSupportFragmentManager().beginTransaction().replace(R.id.container,new PortfolioFragment()).commit();
-
     }
 
     @Override
@@ -84,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements Callback {
             //    break;
             //case MenuUtil.TEAM_FRAGMENT_CODE: setTeamFragment();
             //    break;
-            case MenuUtil.PORTFOLIO_FRAGMENT_CODE:setPortfoliofragment();
+            case MenuUtil.PORTFOLIO_FRAGMENT_CODE:
+                setPortfolioFragment();
                 break;
             //default: setHomeFragment();
         }
@@ -94,6 +52,40 @@ public class MainActivity extends AppCompatActivity implements Callback {
         menuItems.get(selectedMenuPos).setSelected(false);
         menuItems.get(i).setSelected(true);
         selectedMenuPos = i ;
-        adapter.notifyDataSetChanged();
+        menuAdapter.notifyDataSetChanged();
+    }
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        // It will hide the title bar
+        getSupportActionBar().hide();
+        setContentView(R.layout.activity_main);
+
+        homeButton = findViewById(R.id.btn_home);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        setupSideMenu();
+    }
+
+    private void setupSideMenu() {
+        menuRecycleView = findViewById(R.id.rv_side_menu);
+        //menuRecycleView.setVisibility(View.GONE);
+
+        // get menu list item  will get data from a static data class
+
+        menuItems = MenuUtil.getMenuList();
+        menuAdapter = new MenuAdapter(menuItems,this);
+        menuRecycleView.setLayoutManager(new LinearLayoutManager(this));
+        menuRecycleView.setAdapter(menuAdapter);
     }
 }

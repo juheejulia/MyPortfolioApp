@@ -13,6 +13,24 @@
     <string name="name">Bennet\nSebastian</string>
     <string name="current_job_post">Current Job Post</string>
     <string name="diploma">Computer Science Diploma</string>
+    <string name="profile_picture">profile_picture</string>
+    <string name="my_full_name">Juhee Kang Johansson</string>
+    <string name="job_role">App Developer</string>
+    <string name="cv">CV</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="btn_linkedin">btn_linkedin</string>
+    <string name="btn_email">btn_email</string>
+    <string name="btn_mobile">btn_mobile</string>
+    <string name="KnowMoreAboutJuhee">Know more about Juhee</string>
+
+    <string name="presentation"> Det är allid roligt att lära mig nya teknik och förhoppningsvis jag ska
+    bli en bra apputveklare. Det kommer alltid att kläckas kreativa idéer där
+    personer med olika erfarenhet och kulturell bakgrund samarbetar. En person som lägger vikt vid
+    kvalité och hjälper teamet att förbättra produkten med användarens perspektiv är en viktig
+    tillgång i teamet. Jag har bakgrund från pedagogisk verksamhet, är tjej i en mansdominerad
+    branch och växte upp i Sydkorea. Jag är två barns mamma och nu har blivit 40 år med olika
+    livserfarenhet. Jag tror att jag med den bakgrunden kan bidra till företaget mångfald och
+    innovationskraft, och komma med nya perspektiv.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
