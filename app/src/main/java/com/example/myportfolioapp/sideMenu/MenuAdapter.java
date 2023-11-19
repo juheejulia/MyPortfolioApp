@@ -13,13 +13,11 @@ import com.example.myportfolioapp.R;
 import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
-
-    List<MenuItem> mData ;
+    List<MenuItem> menuItems;
     Callback listener;
 
-
-    public MenuAdapter(List<MenuItem> mData, Callback listener) {
-        this.mData = mData;
+    public MenuAdapter(List<MenuItem> menuItems, Callback listener) {
+        this.menuItems = menuItems;
         this.listener = listener;
     }
 
@@ -33,23 +31,21 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
 
-        holder.icon.setImageResource(mData.get(position).getIcon());
-        if (mData.get(position).isSelected()) {
+        holder.icon.setImageResource(menuItems.get(position).getIcon());
+        if (menuItems.get(position).isSelected()) {
             holder.isSelected.setVisibility(View.VISIBLE);
         }
         else
             holder.isSelected.setVisibility(View.GONE);
-
-
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return menuItems.size();
     }
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
-        ImageView icon,isSelected;
+        ImageView icon, isSelected;
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);

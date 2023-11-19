@@ -1,8 +1,6 @@
 package com.example.myportfolioapp.portfolio;
 
-import android.graphics.Matrix;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +9,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.myportfolioapp.R;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class PortfolioFragmentDetails extends BottomSheetDialogFragment {
-
     private ImageView imgPortfolio;
     private TextView title,description;
-    private ConstraintLayout portfolioDetails;
-    private Matrix matrix;
-    private BottomSheetDialog bottomSheetDialog;
 
     public PortfolioFragmentDetails() {
         // Required empty public constructor
@@ -50,16 +41,16 @@ public class PortfolioFragmentDetails extends BottomSheetDialogFragment {
         title = view.findViewById(R.id.portfolio_details_title);
         description = view.findViewById(R.id.portfolio_details_desc);
 
-        // first we need to get our portfolio object from the bundle we have sent
         Bundle bundle = getArguments();
         PortfolioItem item = (PortfolioItem) bundle.getSerializable("object");
 
-        // now we have the item we need just to load it
         loadPortfolioData(item);
     }
 
     public void loadPortfolioData(PortfolioItem item) {
+        // bind title and description
         Glide.with(getContext()).load(item.getImage()).into(imgPortfolio);
-        // bind title and description ...
+        title.setText(item.getTitle());
+        description.setText(item.getLongDescription());
     }
 }

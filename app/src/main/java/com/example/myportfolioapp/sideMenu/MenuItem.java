@@ -2,17 +2,17 @@ package com.example.myportfolioapp.sideMenu;
 
 public class MenuItem {
 
-    private int icon,code;
+    private int icon, menu;
     private boolean isSelected;
 
-    public MenuItem(int icon, int code) {
+    public MenuItem(int icon, int menu) {
         this.icon = icon;
-        this.code = code;
+        this.menu = menu;
     }
 
-    public MenuItem(int icon, int code, boolean isSelected) {
+    public MenuItem(int icon, int menu, boolean isSelected) {
         this.icon = icon;
-        this.code = code;
+        this.menu = menu;
         this.isSelected = isSelected;
     }
 
@@ -20,16 +20,8 @@ public class MenuItem {
         return icon;
     }
 
-    public void setIcon(int icon) {
-        this.icon = icon;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
+    public int getMenu() {
+        return menu;
     }
 
     public boolean isSelected() {

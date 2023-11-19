@@ -1,3 +1,6 @@
+// Juhee Kang Johansson
+// My portfolio app
+
 package com.example.myportfolioapp;
 
 import androidx.appcompat.app.AppCompatActivity;

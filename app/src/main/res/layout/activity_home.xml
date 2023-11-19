@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_green"
+    android:background="@color/background_light"
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
@@ -43,7 +43,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:text="@string/my_full_name"
-        android:textColor="@color/light_grey"
+        android:textColor="@color/dark_green"
         android:textSize="@dimen/medium_font"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

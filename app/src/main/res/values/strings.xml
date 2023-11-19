@@ -22,6 +22,9 @@
     <string name="btn_email">btn_email</string>
     <string name="btn_mobile">btn_mobile</string>
     <string name="KnowMoreAboutJuhee">Know more about Juhee</string>
+    <string name="item_portfolio_title">Portfolio title</string>
+    <string name="item_portfolio_shortDescription">Portfolio description</string>
+
 
     <string name="presentation"> Det är allid roligt att lära mig nya teknik och förhoppningsvis jag ska
     bli en bra apputveklare. Det kommer alltid att kläckas kreativa idéer där

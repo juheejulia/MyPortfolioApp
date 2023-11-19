@@ -12,22 +12,22 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myportfolioapp.R;
+import com.example.myportfolioapp.portfolio.projects.EmployeeList;
+import com.example.myportfolioapp.portfolio.projects.NotePad;
+import com.example.myportfolioapp.portfolio.projects.ProfileSite;
+import com.example.myportfolioapp.portfolio.projects.RestaurantApp;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PortfolioFragment extends Fragment implements PortfolioCallback {
-
-    List<PortfolioItem> mdata;
+    List<PortfolioItem> portfolioItems;
     RecyclerView rv_portfolio;
     PortfolioAdapter portfolioAdapter ;
-
-
 
     public PortfolioFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,56 +36,43 @@ public class PortfolioFragment extends Fragment implements PortfolioCallback {
         return inflater.inflate(R.layout.fragment_portfolio, container, false);
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         rv_portfolio = view.findViewById(R.id.rv_portfolio);
+
         // create a list of portfolio items
-        mdata = new ArrayList<>();
+        portfolioItems = new ArrayList<>();
+        //
+        portfolioItems.add(new ProfileSite());
+        portfolioItems.add(new RestaurantApp());
+        portfolioItems.add(new NotePad());
+        portfolioItems.add(new EmployeeList());
+        //portfolioItems.add(new PortfolioItem(R.drawable.bmi));
+        //portfolioItems.add(new PortfolioItem(R.drawable.calculator));
 
-        mdata.add(new PortfolioItem(R.drawable.project7));
-        mdata.add(new PortfolioItem(R.drawable.project3));
-        mdata.add(new PortfolioItem(R.drawable.project5));
-        mdata.add(new PortfolioItem(R.drawable.project5));
-        mdata.add(new PortfolioItem(R.drawable.project0));
-        mdata.add(new PortfolioItem(R.drawable.project2));
-        mdata.add(new PortfolioItem(R.drawable.project3));
-        mdata.add(new PortfolioItem(R.drawable.project7));
-        mdata.add(new PortfolioItem(R.drawable.project1));
-
-        portfolioAdapter = new PortfolioAdapter(mdata,this);
+        portfolioAdapter = new PortfolioAdapter(portfolioItems,this);
 
         // setup grid recyclerview
-        rv_portfolio.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        rv_portfolio.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rv_portfolio.setAdapter(portfolioAdapter);
     }
 
     @Override
     public void onPortfolioItemClick(int pos) {
-
+        //ToDo Fix double click bug
         //handle click listener event when portfolio item clicked
-
-        // first we need to create a fragment bottom sheet instance
-
+        //create a fragment bottom sheet instance
         PortfolioFragmentDetails portfolioFragmentDetails =
                 new PortfolioFragmentDetails();
 
-        // now we need to send portfolio item to portfolio dialog fragment
-        // we will use bundle for that
-        // also we need our portfolio item data class to implement serializable interface so we can send it
-
+        //send portfolio item to portfolio dialog fragment
         Bundle bundle = new Bundle();
-        bundle.putSerializable("object",mdata.get(pos));
+        bundle.putSerializable("object", portfolioItems.get(pos));
         portfolioFragmentDetails.setArguments(bundle);
 
-        // now let's open the portfolio bottom sheet fregment
-
+        //open the portfolio bottom sheet fragment
         portfolioFragmentDetails.show(getActivity().getSupportFragmentManager(),"tagname");
-
-        //now we done opening the bottom sheet let's test it out
-        // ok everthing goes well
-        // let's set the data in details fragment
     }
 }
