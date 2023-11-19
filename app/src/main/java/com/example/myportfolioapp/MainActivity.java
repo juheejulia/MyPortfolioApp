@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements Callback {
             case SideMenuList.PORTFOLIO_FRAGMENT_POSITION: setPortfolioFragment();
                 break;
             case SideMenuList.LINKS_FRAGMENT_POSITION: setLinksFragment();
+
+            default: setPortfolioFragment();
         }
 
         // High light the selected menu item
