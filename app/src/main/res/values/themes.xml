@@ -10,7 +10,5 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-
-
     <style name="Theme.MyPortfolioApp" parent="Base.Theme.MyPortfolioApp" />
 </resources>

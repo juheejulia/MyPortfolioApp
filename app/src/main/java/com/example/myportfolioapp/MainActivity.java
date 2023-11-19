@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity implements Callback {
         getSupportFragmentManager().beginTransaction().replace(R.id.container,new PortfolioFragment()).commit();
     }
 
+    /*
     public void setLinksFragment() {
-        menuRecycleView.setVisibility(View.GONE);
         getSupportFragmentManager().beginTransaction().replace(R.id.container,new LinksFragment()).commit();
     }
+     */
 
     @Override
     public void onSideMenuItemClick(int i) {
@@ -54,9 +55,8 @@ public class MainActivity extends AppCompatActivity implements Callback {
             //    break;
             case SideMenuList.PORTFOLIO_FRAGMENT_POSITION: setPortfolioFragment();
                 break;
-            case SideMenuList.LINKS_FRAGMENT_POSITION: setLinksFragment();
+            //case SideMenuList.LINKS_FRAGMENT_POSITION: setLinksFragment();
 
-            default: setPortfolioFragment();
         }
 
         // High light the selected menu item
