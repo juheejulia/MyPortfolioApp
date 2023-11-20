@@ -15,7 +15,7 @@ public class NotePad extends PortfolioItem {
     }
 
     public String getShortDescription() {
-        return "Seventh school project";
+        return "Sixth school project";
     }
 
     public String getLongDescription() {

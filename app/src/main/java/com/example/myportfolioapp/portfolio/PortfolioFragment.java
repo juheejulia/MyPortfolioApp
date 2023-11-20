@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myportfolioapp.R;
+import com.example.myportfolioapp.portfolio.projects.BMI;
 import com.example.myportfolioapp.portfolio.projects.EmployeeList;
 import com.example.myportfolioapp.portfolio.projects.NotePad;
 import com.example.myportfolioapp.portfolio.projects.ProfileSite;
@@ -44,13 +45,12 @@ public class PortfolioFragment extends Fragment implements PortfolioCallback {
 
         // create a list of portfolio items
         portfolioItems = new ArrayList<>();
-        //
+
         portfolioItems.add(new ProfileSite());
+        portfolioItems.add(new BMI());
         portfolioItems.add(new RestaurantApp());
-        portfolioItems.add(new NotePad());
         portfolioItems.add(new EmployeeList());
-        //portfolioItems.add(new PortfolioItem(R.drawable.bmi));
-        //portfolioItems.add(new PortfolioItem(R.drawable.calculator));
+        portfolioItems.add(new NotePad());
 
         portfolioAdapter = new PortfolioAdapter(portfolioItems,this);
 

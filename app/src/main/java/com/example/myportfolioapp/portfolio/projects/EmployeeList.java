@@ -15,7 +15,7 @@ public class EmployeeList extends PortfolioItem {
     }
 
     public String getShortDescription() {
-        return "Fourth school project";
+        return "Fifth school project";
     }
 
     public String getLongDescription() {
